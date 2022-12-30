@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>学生信息管理系统登录</title>
+		<style type="text/css">
+			.fontStyle1{
+				color: #01774f;
+				font-size: 18px;
+				font-weight: bolder
+			}
+			.fontStyle2{
+				color: gray;
+				font-size: 13px;
+				
+			}
+			.linkStyle{
+				font-size: 13px;
+				text-decoration: none;
+			}
+			#container{
+				
+			}
+			#div1{
+				
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			#div2{
+				width: 285px;
+				height: 450px;
+				
+				position: absolute;
+				left: 1100px;
+				top: 85px;
+				background: rgba(255,255,255,0.85);
+				border-radius: 10px;
+				padding: 30px 20px;
+				
+			}
+		</style>
+		<link href="asserts\css\bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+
+	<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+	<script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{/webjars/popper.js/1.11.1/dist/popper.js}"></script>
+	<script type="text/javascript" src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+
+	<!-- Icons -->
+	<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/asserts/js/feather.min.js}"></script>
+
+	<script>
+		function send(i)
+		{
+
+			if (i===0)
+			{
+				$("#loginFrom").attr("action", $("#bt0").attr("uri")).submit();
+				return false;
+			}
+			else if(i===1)
+			{
+				$("#loginFrom").attr("action",$("#bt1").attr("uri")).submit();
+				return false;
+			}
+			else
+			{
+				$("#loginFrom").attr("action",$("#bt2").attr("uri")).submit();
+				return false;
+			}
+		}
+
+	</script>
+	</head>
+	<body style="margin: 0px;padding: 0px;">
+		<table  width="100%" cellspacing="0" >
+			<tr height="110">
+				<td>&nbsp;</td>
+				<td width="60%">
+					<img src="asserts/img/logo.png" />
+				</td>
+				<td></td>
+			</tr>
+			<tr height="550">
+				<td colspan="3">
+					<!--两个并列的div默认上下结构 
+						使用大div包起来
+					-->
+					<div style="position: relative;height: 520px;">
+					<div id="div1">
+						<img src="asserts/img/banner3.jpg" height="520"/>
+					</div>
+					<div id="div2">
+						<form id="loginFrom" method="post">
+							<label style="color: #01774F;font-size: 18px;font-weight: bolder;">欢迎登陆</label>
+							<div class="alert alert-danger" role="alert" th:if="${msg!=null}">
+		<div th:text="${msg}"></div>
+	</div>
+							<br />
+							<input type="text" name="username" style="height: 30px;width: 240px;margin-top: 30px;"placeholder="学号/工号/管理员号"  />
+							<input type="password" name="password" style="height:30px;width: 240px;margin-top: 30px;"placeholder="密码"/>
+							<input type="text" style="height:30px;width: 120px;margin-top: 20px;"placeholder="验证码"  />
+							<img src="asserts/img/下载.png" style="position: relative;"/>
+							<br />
+							<button class="btn btn-lg btn-success btn-block"  th:attr="uri=@{/stu/login}" onclick="send(0)"  id="bt0">学生登录</button>
+	<button class="btn btn-lg btn-primary btn-block"  th:attr="uri=@{/tea/login}" onclick="send(1)" id="bt1">教师登录</button>
+	<button class="btn btn-lg btn-danger btn-block"   th:attr="uri=@{/adm/login}"  onclick="send(2)" id="bt2">管理员登录</button>
+	<p class="mt-5 mb-3 text-muted">© 学生成绩信息管理系统</p>
+						</form>				</div>
+					</div>
+				</td>
+				
+			</tr>
+			<tr height="255">
+				<td></td>
+				<td>
+					<table  width="100%" height="248">
+						<tr height="35">
+							<td colspan="2" width="50%">
+								<label class="fontStyle1">
+									使用说明书
+								</label>
+							</td>
+							
+							<td colspan="2">
+								<label class="fontStyle1">
+									帮助电话
+								</label>
+							</td>
+							
+						</tr>
+						<tr height="140">
+							<td width="65" align="center" valign="top">
+								<img src="asserts/img/1.png" width="60"/>
+							</td>
+							<td><a href="chrome-extension://ibllepbpahcoppkjjllbabhnigcbffpi/https://sso.hubu.edu.cn/assets/cab/rzsc.pdf" class="linkStyle">统一身份认证平台</a><br />
+<label class="fontStyle2">1.统一身份认证平台是学校智慧校园身份管理与服务中心，为校内各
+类应用系统提供统一的身份认证和授权管理服务<br/>2.统一身份认证平台和智慧服务中心请使用IE10及以上版本的浏览器
+，推荐使用谷歌（Chrome）或火狐（FireFox）浏览器登录,若使用360
+浏览器兼容模式请将IE浏览器升级至IE10及以上版本</label>
+</td>
+							<td width="65" align="center" valign="top">
+								<img src="asserts/img/2.png"  width="60" />
+							</td>
+							<td>
+								<label class="fontStyle2">
+1.登陆账号为个人学号/职工号，初始密码为hubu@+身份证号码后六位。若末位为X，
+请大写。例如，身份证号码后六位为12345x，则初始密码应该为hubu@12345X<br />
+<label class="fontStyle2" style="color: red;">2.如需进入OA系统，请使用IE10及以上版本浏览器登录智慧服务中心</label><br />
+3.统一身份认证平台使用问题，请于工作时间联系校园建设与信息化办公室，<br />
+联系人：周老师 88665048</label></td>
+						</tr>
+						<tr>
+							<td colspan="4" align="center">
+								<label class="fontStyle2" style="color: red;">温馨提示:</label>
+								<label class="fontStyle2" style="color: #01774F;">出于安全考虑，一旦您访问过那些需要您提供凭证信息的应用时，请操作完之后关闭浏览器</label></td>
+							
+						</tr>
+					</table>
+				</td>
+				<td></td>
+			</tr>
+			<tr height="62" bgcolor="#027750">
+				<td>&nbsp;</td>
+				<td align="center">湖北大学版权所有 Copyright©2019-2021 校园建设与信息化办公室 地址：湖北省武汉市武昌区友谊大道368号 联系电话：027-88665038 电子邮箱：one@hubu.edu.cn</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+	</body>
+</html>
